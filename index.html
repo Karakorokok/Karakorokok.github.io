@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="icon.ico" type="image/x-icon">
+    <title>shatGPT</title>
+
+    <!-- bootstrap 5.3.0 alpha -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" 
+    crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" 
+    crossorigin="anonymous"></script>
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- font-awesome -->
+    <link href="fontawesome-free-6.2.0-web/css/all.css" rel="stylesheet">
+    <!-- custom css -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6 col-sm-8 mt-4 p-2" id="shatGPT">
+                <div class="form-control p-4">
+                    <div class="main mb-5"></div>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="txt_input" placeholder="Chat moko bogart..." style="height: 40px">
+                        <button class="btn btn-info" id="submit"><i class="fa-solid fa-paper-plane text-white"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mt-5">
+                <h1 class="text-center mt-5"><span class="text-white">shat</span><span class="text-info">GPT</span></h1>
+                <br>
+                <h1 class="text-center mt-5 display-1 mb-5">
+                    <i class="fa-solid fa-robot text-info fa-2xl"></i>
+                </h1>  
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+<script>
+
+    $(document).ready(function() {
+
+        var init = document.createElement("div");
+        init.className = "response";
+        init.innerText = "@hoy, bogart! ANO TO NACHISMIS MO SAAKUN, AGI AGI SIR BA, SIGURADUHA INDI KAABOT SAKON, YUDIPOTPOT";
+        setTimeout(function() {
+            document.getElementsByClassName("main")[0].appendChild(init);
+            var h = document.getElementsByClassName("main")[0].scrollHeight;
+            document.getElementsByClassName("main")[0].scrollTop = h + 100;
+        }, 1000)
+
+        var h = document.getElementsByClassName("main")[0].scrollHeight;
+        document.getElementsByClassName("main")[0].scrollTop = h;
+
+
+        document.getElementById("txt_input").focus();
+        document.getElementsByTagName("body")[0].addEventListener("keypress", function (e) {
+            if(e.key == "Enter") {
+                submit();
+            }
+         });
+
+        document.getElementById("submit").addEventListener("click", submit);
+
+        var s = 0;
+        function submit() {
+
+            const res = ["@bogart, IHAMBAL SINO GIN MANIPULATE KO TUBANGA KO BWAS KAY MATALIKOD KO","NXT TIME MG STORYA MAKE SURE INDI KALAB OT SAKUN BOI","DIIN GAHALIN NAPANGHAMBAL MO...SAUCE?","SUGID TA KA MAMA BOI"];
+            var text = document.getElementById("txt_input").value;
+            var request = document.createElement("div");
+            request.className = "request";
+            request.innerText = text;
+            
+            document.getElementsByClassName("main")[0].appendChild(request);
+            document.getElementById("txt_input").value = "";
+
+            var response = document.createElement('div');
+            response.className = "response";
+            response.innerText = res[s];
+            s++;
+
+            if(s >= 4) {
+                response.innerText = res[3];
+            }
+
+            setTimeout(function() {
+                document.getElementsByClassName("main")[0].appendChild(response);
+                var h = document.getElementsByClassName("main")[0].scrollHeight;
+                document.getElementsByClassName("main")[0].scrollTop = h + 100;
+            }, 1000)
+
+            var h = document.getElementsByClassName("main")[0].scrollHeight;
+            document.getElementsByClassName("main")[0].scrollTop = h;
+        }
+    });
+   
+</script>
+
+</html>
